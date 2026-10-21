@@ -2,7 +2,6 @@
 
 namespace App\Http\Resources\Api\V1;
 
-use App\Enums\KycStatus;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -29,10 +28,8 @@ class UserResource extends JsonResource
             'address' => $this->address,
             'country' => $this->country,
             'avatar' => $avatarUrl,
-            'kyc_status' => $this->kyc_status?->value ?? KycStatus::NotStarted->value,
             'kyc_verified_at' => $this->kyc_verified_at?->toIso8601String(),
             'is_activated' => $this->isActivated(),
-            'wallet' => $this->wallet ? new WalletResource($this->wallet) : null,
         ];
     }
 

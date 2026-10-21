@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Enums\KycStatus;
 use App\Enums\UserRole;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -29,7 +28,6 @@ class UserFactory extends Factory
             'phone' => null,
             'address' => null,
             'country' => null,
-            'kyc_status' => KycStatus::NotStarted,
             'kyc_verified_at' => null,
             'blocked_at' => null,
             'blocked_reason' => null,
@@ -50,7 +48,6 @@ class UserFactory extends Factory
     public function kycVerified(): static
     {
         return $this->state(fn () => [
-            'kyc_status' => KycStatus::Verified,
             'kyc_verified_at' => now(),
         ]);
     }
